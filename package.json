@@ -1,0 +1,29 @@
+{
+  "name": "grackim.me",
+  "description": "Grace Kim's Personal Website",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "lint": "eslint .",
+    "serve": "gatsby serve"
+  },
+  "dependencies": {
+    "eslint-import-resolver-webpack": "^0.8.4",
+    "gatsby": "^1.9.164",
+    "gatsby-plugin-styletron": "^1.0.11",
+    "gatsby-source-filesystem": "^1.5.15",
+    "gatsby-transformer-remark": "^1.7.30",
+    "normalize.css": "^7.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.5.0",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "1.10.2"
+  }
+}
