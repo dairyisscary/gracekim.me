@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+    "gatsby-plugin-react-helmet",
     "gatsby-plugin-styletron",
     {
       resolve: "gatsby-source-filesystem",

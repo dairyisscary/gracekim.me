@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { styled } from "styletron-react";
 
 import { H1 } from "common/header";
@@ -97,6 +98,9 @@ function Index({ data }) {
   const pages = data.allMarkdownRemark.edges;
   return (
     <IndexWrapper>
+      <Helmet>
+        <title>Grace Kim</title>
+      </Helmet>
       <Avatar />
       <Content>
         <H1>Grace Kim</H1>
