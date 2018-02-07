@@ -1,9 +1,10 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
 import { styled } from "styletron-react";
 import "normalize.css";
 
-import "./index.css";
+import Styles from "./index.css";
 
 const Wrapper = styled("div", {
   display: "flex",
@@ -28,6 +29,9 @@ function Main({ children }) {
   const extraLang = currentYear > 2018 ? "-present" : "";
   return (
     <Wrapper>
+      <Helmet>
+        <meta name="theme-color" content={Styles.bodyBackgroundColor} />
+      </Helmet>
       {children()}
       <Footer>&copy; Grace Kim 2018{extraLang}</Footer>
     </Wrapper>
