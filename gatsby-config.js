@@ -3,6 +3,12 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-styletron",
     {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: "UA-113767397-1",
+      },
+    },
+    {
       resolve: "gatsby-plugin-favicon",
       options: {
         logo: "./src/pages/images/favicon.png",
