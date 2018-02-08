@@ -4,7 +4,7 @@ import { styled } from "styletron-react";
 
 import { H1 } from "common/header";
 import { RETINA_MEDIA_QUERY } from "common/base-css";
-import Link, { FADED_WHITE_BG, A } from "common/link";
+import Link, { FADED_WHITE_BG } from "common/link";
 import AvatarImg from "./images/avatar.png";
 import AvatarImg2X from "./images/avatar@2x.png";
 
@@ -106,9 +106,7 @@ function Index({ data }) {
         <H1>Grace Kim</H1>
         <TagLine>
           {"PhD Candidate, "}
-          <A href="http://web.mit.edu/hasts/" target="_blank">
-            MIT HASTS Program
-          </A>
+          <a href="http://web.mit.edu/hasts/">MIT HASTS Program</a>
         </TagLine>
       </Content>
       <Navigation>

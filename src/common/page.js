@@ -28,7 +28,7 @@ const BackButton = styled(Link, {
   right: "0.75rem",
   display: "block",
   borderRadius: "100%",
-  border: "none",
+  border: "none !important",
   width: "2.5rem",
   height: "2.5rem",
   background: `url("${BackButtonSVG}") center center no-repeat`,
