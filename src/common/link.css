@@ -1,0 +1,5 @@
+@value transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+@value color: #FFF;
+@value textDecoration: none;
+@value borderBottom: 1px dotted rgba(255, 255, 255, 0.5);
+@value hoverBorderColor: transparent;

@@ -1,0 +1,11 @@
+@value color, transition, textDecoration, borderBottom, hoverBorderColor from "common/link.css";
+
+.markdown-content a {
+  color: color;
+  transition: transition;
+  text-decoration: textDecoration;
+  border-bottom: borderBottom;
+}
+.markdown-content a:hover {
+  border-bottom-color: hoverBorderColor;
+}

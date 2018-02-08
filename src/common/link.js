@@ -1,18 +1,17 @@
 import { styled } from "styletron-react";
 import Link from "gatsby-link";
 
-const baseLinkStyles = {
-  color: "#FFF",
-  textDecoration: "none",
-  transition:
-    "color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out",
-  borderBottom: "1px dotted rgba(255, 255, 255, 0.5)",
+import LinkStyles from "./link.css";
+
+const { hoverBorderColor, ...baseLinkStyles } = LinkStyles;
+const fullLinkStyles = {
+  ...baseLinkStyles,
   ":hover": {
-    borderBottomColor: "transparent",
+    borderBottomColor: hoverBorderColor,
   },
 };
 
 export const FADED_WHITE_BG = "rgba(255, 255, 255, 0.075)";
-export const A = styled("a", baseLinkStyles);
+export const A = styled("a", fullLinkStyles);
 
-export default styled(Link, baseLinkStyles);
+export default styled(Link, fullLinkStyles);

@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 
 import Page from "common/page";
+import "./markdown-page.css";
 
 function MarkdownPage({ data }) {
   const post = data.markdownRemark;
@@ -12,6 +13,7 @@ function MarkdownPage({ data }) {
         <title>{title} | Grace Kim</title>
       </Helmet>
       <div
+        className="markdown-content"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
