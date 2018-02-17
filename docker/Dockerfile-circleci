@@ -1,0 +1,4 @@
+FROM alpine:3.7
+
+RUN apk -v --update --no-cache add --virtual circlepkgs \
+  git openssh-client openssl tar gzip ca-certificates

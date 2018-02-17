@@ -1,0 +1,7 @@
+FROM dairyisscary/circleci:latest
+
+RUN apk -v --update --no-cache add jq
+
+RUN apk -v --no-cache add python py-pip groff less bash && \
+  pip install --upgrade awscli==1.14.36 && \
+  apk --purge -v del py-pip
