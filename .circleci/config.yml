@@ -1,0 +1,102 @@
+working_dir_ref: &working_dir_ref
+  working_directory: ~/gracekimdotme
+
+version: 2
+jobs:
+  install_lint_build:
+    <<: *working_dir_ref
+    docker:
+      - image: circleci/node:8.9.4
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: Restoring node_modules
+          key: node_modules-{{ checksum "yarn.lock" }}
+      - run:
+          name: Installing NPM Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Caching node_modules
+          key: node_modules-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: Linting Source
+          command: yarn run lint
+
+      - run:
+          name: Building
+          command: yarn run build
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - public/
+
+  deploy_aws_infrastructure:
+    <<: *working_dir_ref
+    docker:
+      - image: dairyisscary/terraform:0.11.3
+
+    steps:
+      - checkout
+      - run:
+          name: Initing Terraform
+          command: |
+            cd infra && terraform init
+      - run:
+          name: Forming Infrastructure
+          command: |
+            cd infra && \
+            terraform apply -auto-approve && \
+            mkdir -p output
+            terraform output -json > output/terraform.json
+      - persist_to_workspace:
+          root: .
+          paths:
+            - infra/output
+
+  deploy_to_aws:
+    <<: *working_dir_ref
+    docker:
+      - image: dairyisscary/awscli:1.14.36
+
+    steps:
+      - attach_workspace:
+          at: ~/gracekimdotme
+      - run:
+          name: Syncing S3 Bucket
+          command: |
+            aws s3 sync --delete \
+              --cache-control max-age=10800 \
+              public/ s3://$(cat infra/output/terraform.json | jq '.main_bucket.value' -r)
+
+      - run:
+          name: Invalidating Cloudfront
+          command: |
+            aws cloudfront create-invalidation \
+              --distribution-id $(\
+                 cat infra/output/terraform.json | \
+                 jq '.main_distribution_id.value' -r \
+              ) \
+              --paths '/*'
+
+workflows:
+  version: 2
+  "Check and Deploy":
+    jobs:
+      - install_lint_build
+      - deploy_aws_infrastructure:
+          filters:
+            branches:
+              only: production
+      - deploy_to_aws:
+          requires:
+            - install_lint_build
+            - deploy_aws_infrastructure
+          filters:
+            branches:
+              only: production
