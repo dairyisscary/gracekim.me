@@ -73,7 +73,7 @@ const NavLink = styled(Link, {
   letterSpacing: "0.2rem",
   fontSize: tagLineFontSize,
   textTransform: "uppercase",
-  borderBottom: "none",
+  borderBottom: "none !important",
   ":not(:last-child)": {
     borderRight: `${contentBorderSize} solid ${contentBorderColor}`,
   },
