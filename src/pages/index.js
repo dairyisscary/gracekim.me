@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { styled } from "styletron-react";
 
 import { H1 } from "common/header";
-import { RETINA_MEDIA_QUERY } from "common/base-css";
+import { RETINA_MEDIA_QUERY, SMALL_SCREEN } from "common/base-css";
 import Link, { FADED_WHITE_BG } from "common/link";
 import AvatarImg from "./images/avatar.png";
 import AvatarImg2X from "./images/avatar@2x.png";
@@ -64,10 +64,14 @@ const Navigation = styled("nav", {
   border: `${contentBorderSize} solid ${contentBorderColor}`,
   borderRadius: "4px",
   margin: "0 2rem",
+  [SMALL_SCREEN]: {
+    flexDirection: "column",
+  },
 });
 
 const NavLink = styled(Link, {
   minWidth: "7.5rem",
+  padding: "0 1rem",
   height: navLinkHeight,
   lineHeight: navLinkHeight,
   letterSpacing: "0.2rem",
@@ -79,6 +83,12 @@ const NavLink = styled(Link, {
   },
   ":hover": {
     background: FADED_WHITE_BG,
+  },
+  [SMALL_SCREEN]: {
+    borderRight: "none !important",
+    ":not(:last-child)": {
+      borderBottom: `${contentBorderSize} solid ${contentBorderColor} !important`,
+    },
   },
 });
 
@@ -96,8 +106,7 @@ const Avatar = styled("div", {
   },
 });
 
-function Index({ data }) {
-  const pages = data.allMarkdownRemark.edges;
+function Index() {
   return (
     <IndexWrapper>
       <Helmet>
@@ -112,32 +121,13 @@ function Index({ data }) {
         </TagLine>
       </Content>
       <Navigation>
-        {pages.map(({ node: { id, frontmatter, fields } }) => (
-          <NavLink key={id} to={fields.slug}>
-            {frontmatter.title}
-          </NavLink>
-        ))}
+        <NavLink to="/about/">About</NavLink>
+        <NavLink to="/research/">Research</NavLink>
+        <NavLink to="/writing/">Writing</NavLink>
+        <NavLink to="/contact/">Contact</NavLink>
       </Navigation>
     </IndexWrapper>
   );
 }
-
-export const query = graphql`
-  query GraceKimMePages {
-    allMarkdownRemark {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }
-`;
 
 export default Index;

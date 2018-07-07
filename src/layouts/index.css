@@ -25,3 +25,21 @@ a, a:link, a:hover, a:active, a:focus, a:visited {
 a:hover {
   border-bottom-color: transparent;
 }
+
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5 {
+  color: #FFF;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.markdown-content h3 {
+  font-size: 1.1rem;
+}
+
+.markdown-content p {
+  margin: 0 0 2rem;
+}

@@ -31,7 +31,9 @@ const BackButton = styled(Link, {
   border: "none !important",
   width: "2.5rem",
   height: "2.5rem",
-  background: `url("${BackButtonSVG}") center center no-repeat`,
+  backgroundImage: `url("${BackButtonSVG}")`,
+  backgroundPosition: "center center",
+  backgroundRepeat: "no-repeat",
   backgroundSize: "70%",
   ":hover": {
     backgroundColor: FADED_WHITE_BG,
