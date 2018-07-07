@@ -9,27 +9,27 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
-    "eslint-import-resolver-webpack": "^0.8.4",
-    "gatsby": "^1.9.164",
+    "gatsby": "^1.9.273",
     "gatsby-plugin-favicon": "^2.1.1",
-    "gatsby-plugin-google-analytics": "^1.0.17",
-    "gatsby-plugin-react-helmet": "^2.0.4",
-    "gatsby-plugin-sharp": "^1.6.27",
-    "gatsby-plugin-styletron": "^1.0.11",
-    "gatsby-remark-images": "^1.5.41",
-    "gatsby-source-filesystem": "^1.5.15",
-    "gatsby-transformer-remark": "^1.7.30",
-    "normalize.css": "^7.0.0",
+    "gatsby-plugin-google-analytics": "^1.0.31",
+    "gatsby-plugin-react-helmet": "^2.0.11",
+    "gatsby-plugin-sharp": "^1.6.48",
+    "gatsby-plugin-styletron": "^2.0.9",
+    "gatsby-remark-images": "^1.5.67",
+    "gatsby-source-filesystem": "^1.5.39",
+    "gatsby-transformer-remark": "^1.7.44",
+    "normalize.css": "^8.0.0",
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
-    "eslint": "^4.16.0",
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-prettier": "^2.5.0",
-    "eslint-plugin-react": "^7.5.1",
-    "prettier": "1.10.2"
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
+    "prettier": "1.13.7"
   }
 }

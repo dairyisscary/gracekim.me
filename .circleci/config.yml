@@ -6,7 +6,7 @@ jobs:
   install_lint_build:
     <<: *working_dir_ref
     docker:
-      - image: circleci/node:8.9.4
+      - image: circleci/node:8.11.3
 
     steps:
       - checkout

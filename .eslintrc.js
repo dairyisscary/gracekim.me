@@ -37,6 +37,7 @@ module.exports = {
     "prettier/prettier": "error",
     "import/no-extraneous-dependencies": "off",
     "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "react/prop-types": "off",
   },
