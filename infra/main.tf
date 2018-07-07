@@ -1,6 +1,6 @@
 provider "aws" {
   region  = "us-east-1"
-  version = "~> 1.10"
+  version = "~> 1.26"
 }
 
 terraform {
@@ -21,9 +21,25 @@ variable "main_domain" {
   default = "gracekim.me"
 }
 
-data "aws_acm_certificate" "main_cert" {
-  domain   = "www.gracekim.me"
-  statuses = ["ISSUED"]
+resource "aws_acm_certificate" "main_cert" {
+  domain_name               = "gracekim.me"
+  validation_method         = "DNS"
+  subject_alternative_names = ["www.gracekim.me"]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_acm_certificate_validation" "main_cert" {
+  certificate_arn         = "${aws_acm_certificate.main_cert.arn}"
+  validation_record_fqdns = [
+    "${aws_route53_record.main_cert_base_validation.fqdn}",
+    "${aws_route53_record.main_cert_www_validation.fqdn}"
+  ]
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 output "main_bucket" {
@@ -176,9 +192,9 @@ resource "aws_cloudfront_distribution" "main_website_cdn" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = "${data.aws_acm_certificate.main_cert.arn}"
+    acm_certificate_arn      = "${aws_acm_certificate_validation.main_cert.certificate_arn}"
     ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1.2_2018"
+    minimum_protocol_version = "TLSv1.1_2016"
   }
 
   aliases = [
@@ -243,9 +259,9 @@ resource "aws_cloudfront_distribution" "www_website_cdn" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = "${data.aws_acm_certificate.main_cert.arn}"
+    acm_certificate_arn      = "${aws_acm_certificate_validation.main_cert.certificate_arn}"
     ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1.2_2018"
+    minimum_protocol_version = "TLSv1.1_2016"
   }
 
   aliases = [
@@ -280,4 +296,20 @@ resource "aws_route53_record" "cdn_alias_aaaa_main_domain" {
     zone_id                = "${aws_cloudfront_distribution.main_website_cdn.hosted_zone_id}"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "main_cert_base_validation" {
+  zone_id = "${data.aws_route53_zone.primary.zone_id}"
+  name    = "${aws_acm_certificate.main_cert.domain_validation_options.0.resource_record_name}"
+  type    = "${aws_acm_certificate.main_cert.domain_validation_options.0.resource_record_type}"
+  records = ["${aws_acm_certificate.main_cert.domain_validation_options.0.resource_record_value}"]
+  ttl     = 60
+}
+
+resource "aws_route53_record" "main_cert_www_validation" {
+  zone_id = "${data.aws_route53_zone.primary.zone_id}"
+  name    = "${aws_acm_certificate.main_cert.domain_validation_options.1.resource_record_name}"
+  type    = "${aws_acm_certificate.main_cert.domain_validation_options.1.resource_record_type}"
+  records = ["${aws_acm_certificate.main_cert.domain_validation_options.1.resource_record_value}"]
+  ttl     = 60
 }
