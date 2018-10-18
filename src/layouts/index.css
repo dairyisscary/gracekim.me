@@ -37,9 +37,25 @@ a:hover {
 }
 
 .markdown-content h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .markdown-content p {
   margin: 0 0 2rem;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0 0 2rem;
+  padding-left: 2.5rem;
+}
+
+.markdown-content ul li,
+.markdown-content ol li {
+  padding-left: 0.5rem;
+}
+
+.markdown-content p + ul,
+.markdown-content p + ol {
+  margin-top: -1.1rem;
 }
