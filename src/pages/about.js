@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 
+import Layout from "common/layout";
 import Page from "common/page";
 import CV from "./cv.pdf";
 
@@ -29,4 +30,8 @@ function About() {
   );
 }
 
-export default About;
+export default () => (
+  <Layout>
+    <About />
+  </Layout>
+);

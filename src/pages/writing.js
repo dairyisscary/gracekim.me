@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 
+import Layout from "common/layout";
 import Page from "common/page";
 import Microbes from "./microbes.pdf";
 
@@ -56,4 +57,8 @@ function Writing() {
   );
 }
 
-export default Writing;
+export default () => (
+  <Layout>
+    <Writing />
+  </Layout>
+);

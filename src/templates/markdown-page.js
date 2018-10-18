@@ -1,6 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { graphql } from "gatsby";
 
+import Layout from "common/layout";
 import Page from "common/page";
 
 function MarkdownPage({ data }) {
@@ -31,4 +33,8 @@ export const query = graphql`
   }
 `;
 
-export default MarkdownPage;
+export default props => (
+  <Layout>
+    <MarkdownPage {...props} />
+  </Layout>
+);

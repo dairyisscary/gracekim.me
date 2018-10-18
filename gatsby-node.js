@@ -1,20 +1,15 @@
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
-exports.modifyWebpackConfig = function modifyWebpackConfig({ config }) {
-  config.merge({
+exports.onCreateWebpackConfig = function modifyWebpackConfig({ actions }) {
+  actions.setWebpackConfig({
     resolve: {
-      modulesDirectories: [
-        path.resolve(__dirname, "./src"),
-        path.resolve(__dirname, "./node_modules"),
-      ],
+      modules: [path.resolve(__dirname, "./src"), path.resolve(__dirname, "./node_modules")],
     },
   });
-  return config;
 };
 
-exports.onCreateNode = function onCreateNode({ node, getNode, boundActionCreators }) {
-  const { createNodeField } = boundActionCreators;
+exports.onCreateNode = function onCreateNode({ node, getNode, actions: { createNodeField } }) {
   if (node.internal.type === "MarkdownRemark") {
     const slug = createFilePath({ node, getNode, basePath: "pages" });
     createNodeField({
@@ -25,8 +20,7 @@ exports.onCreateNode = function onCreateNode({ node, getNode, boundActionCreator
   }
 };
 
-exports.createPages = function createPages({ graphql, boundActionCreators }) {
-  const { createPage } = boundActionCreators;
+exports.createPages = function createPages({ graphql, actions: { createPage } }) {
   return new Promise(resolve => {
     graphql(`
       query MarkDown {

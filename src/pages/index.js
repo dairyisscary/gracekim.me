@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { styled } from "styletron-react";
 
+import Layout from "common/layout";
 import { H1 } from "common/header";
 import { RETINA_MEDIA_QUERY, SMALL_SCREEN } from "common/base-css";
 import Link, { FADED_WHITE_BG } from "common/link";
@@ -130,4 +131,8 @@ function Index() {
   );
 }
 
-export default Index;
+export default () => (
+  <Layout>
+    <Index />
+  </Layout>
+);

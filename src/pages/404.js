@@ -1,5 +1,6 @@
 import React from "react";
 
+import Layout from "common/layout";
 import Page from "common/page";
 
 function FourOhFour() {
@@ -12,4 +13,8 @@ function FourOhFour() {
   );
 }
 
-export default FourOhFour;
+export default () => (
+  <Layout>
+    <FourOhFour />
+  </Layout>
+);

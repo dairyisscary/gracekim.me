@@ -1,10 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import PropTypes from "prop-types";
 import { styled } from "styletron-react";
 import "normalize.css";
 
-import Styles from "./index.css";
+import Styles from "./layout.css";
 
 const Wrapper = styled("div", {
   display: "flex",
@@ -24,7 +23,7 @@ const Footer = styled("footer", {
   marginTop: "2rem",
 });
 
-function Main({ children }) {
+function Layout({ children }) {
   const currentYear = new Date().getFullYear();
   const extraLang = currentYear > 2018 ? "-present" : "";
   return (
@@ -32,7 +31,7 @@ function Main({ children }) {
       <Helmet>
         <meta name="theme-color" content={Styles.bodyBackgroundColor} />
       </Helmet>
-      {children()}
+      {children}
       <Footer>
         &copy; Grace Kim 2018
         {extraLang}
@@ -41,8 +40,4 @@ function Main({ children }) {
   );
 }
 
-Main.propTypes = {
-  children: PropTypes.func.isRequired,
-};
-
-export default Main;
+export default Layout;

@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { styled } from "styletron-react";
 
 import { FormButton, TextArea, Input, FieldLabel } from "common/form";
+import Layout from "common/layout";
 import Page from "common/page";
 
 const Fields = styled("div", {
@@ -47,4 +48,8 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default () => (
+  <Layout>
+    <Contact />
+  </Layout>
+);
