@@ -33,7 +33,10 @@ function Main({ children }) {
         <meta name="theme-color" content={Styles.bodyBackgroundColor} />
       </Helmet>
       {children()}
-      <Footer>&copy; Grace Kim 2018{extraLang}</Footer>
+      <Footer>
+        &copy; Grace Kim 2018
+        {extraLang}
+      </Footer>
     </Wrapper>
   );
 }
