@@ -21,9 +21,9 @@ function About() {
         {"who studies the intersections of artworks, cultural heritage, and technoscience."}
       </p>
       <p>
-        {"My CV is available for download "}
-        <a href={CV}>here</a>
-        {"."}
+        {"My "}
+        <a href={CV}>curriculum vitae</a>
+        {" is also available for download."}
       </p>
     </Page>
   );
