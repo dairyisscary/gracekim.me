@@ -12,14 +12,22 @@ function About() {
         <title>About | Grace Kim</title>
       </Helmet>
       <p>
-        {"I am a "}
-        <a href="http://web.mit.edu/hasts/graduate/kim.html">
-          {"PhD candidate in MIT"}
-          &apos;
-          {"s Graduate Program in History | Anthropology | Science, Technology, and Society"}
+        {
+          "Focusing on matters of materiality and expertise, I am an anthropologist who studies how "
+        }
+        {
+          "scientists develop technologies for the restoration of art and cultural heritage. I have "
+        }
+        {
+          "recently received my PhD in History, Anthropology, and Science, Technology, and Society at MIT."
+        }
+      </p>
+      <p>
+        {"I am currently a "}
+        <a href="https://anthropology.mit.edu/people/visitors">
+          {"lecturer in the Anthropology department at MIT"}
         </a>
-        {". Focusing on materiality and expertise, I am a cultural anthropologist "}
-        {"who studies the intersections of artworks, cultural heritage, and technoscience."}
+        {"."}
       </p>
       <p>
         {"My "}

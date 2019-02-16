@@ -116,10 +116,7 @@ function Index() {
       <Avatar />
       <Content>
         <H1>Grace Kim</H1>
-        <TagLine>
-          {"PhD Candidate, "}
-          <a href="http://web.mit.edu/hasts/">MIT HASTS Program</a>
-        </TagLine>
+        <TagLine>Anthropologist of Art&nbsp;and&nbsp;Science</TagLine>
       </Content>
       <Navigation>
         <NavLink to="/about/">About</NavLink>
