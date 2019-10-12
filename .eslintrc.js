@@ -18,6 +18,9 @@ module.exports = {
   ],
   globals: {
     graphql: true,
+    browser: true,
+    window: true,
+    document: true,
   },
   settings: {
     "import/resolver": {
@@ -40,5 +43,6 @@ module.exports = {
     "react/jsx-one-expression-per-line": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "react/prop-types": "off",
+    "import/prefer-default-export": "off",
   },
 };
