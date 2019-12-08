@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { styled } from "styletron-react";
+import { styled, withStyle } from "styletron-react";
 
 import Layout from "common/layout";
 import { H1 } from "common/header";
@@ -60,6 +60,10 @@ const TagLine = styled("p", {
   margin: "0",
 });
 
+const PaddedTagLine = withStyle(TagLine, {
+  marginTop: "0.3rem",
+});
+
 const Navigation = styled("nav", {
   display: "flex",
   border: `${contentBorderSize} solid ${contentBorderColor}`,
@@ -117,6 +121,7 @@ function Index() {
       <Content>
         <H1>Grace Kim</H1>
         <TagLine>Anthropologist of Art&nbsp;and&nbsp;Science</TagLine>
+        <PaddedTagLine>Postdoctoral Fellow, Getty Research Institute</PaddedTagLine>
       </Content>
       <Navigation>
         <NavLink to="/about/">About</NavLink>
