@@ -1,10 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  extends: [
-    "airbnb",
-    "prettier",
-  ],
+  extends: ["airbnb", "prettier"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -12,10 +9,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  plugins: [
-    "react",
-    "prettier",
-  ],
+  plugins: ["react", "prettier"],
   globals: {
     graphql: true,
     browser: true,
@@ -27,10 +21,7 @@ module.exports = {
       webpack: {
         config: {
           resolve: {
-            modules: [
-              path.resolve(__dirname, "./src"),
-              path.resolve(__dirname, "./node_modules"),
-            ],
+            modules: [path.resolve(__dirname, "./src"), path.resolve(__dirname, "./node_modules")],
           },
         },
       },

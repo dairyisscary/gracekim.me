@@ -3,7 +3,7 @@
 @value bodyBackgroundColor: #353F4C;
 
 body {
-  color: #FFF;
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 300;
   line-height: 1.65;
@@ -12,13 +12,21 @@ body {
   min-height: 100vh;
 }
 
-*, *::before, *::after {
-	box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-a, a:link, a:hover, a:active, a:focus, a:visited {
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  color: #FFF;
+a,
+a:link,
+a:hover,
+a:active,
+a:focus,
+a:visited {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border-bottom-color 0.2s ease-in-out;
+  color: #fff;
   text-decoration: none;
   border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
 }
@@ -29,7 +37,7 @@ a:hover {
 .markdown-content h3,
 .markdown-content h4,
 .markdown-content h5 {
-  color: #FFF;
+  color: #fff;
   font-weight: 600;
   line-height: 1.5;
   margin: 0 0 1rem;

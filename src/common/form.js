@@ -13,7 +13,8 @@ export const FieldLabel = styled("label", {
 
 const BASE_FORM_INPUT_STYLES = Object.freeze({
   // eslint-disable-next-line prettier/prettier
-  transition: "border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out",
+  transition:
+    "border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out",
   backgroundColor: "transparent",
   borderRadius: "4px",
   border: "1px solid #FFF",
