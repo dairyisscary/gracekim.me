@@ -117,6 +117,7 @@ function Index() {
       <Content>
         <H1>Grace Kim</H1>
         <TagLine>Anthropologist of Art&nbsp;and&nbsp;Science</TagLine>
+        <TagLine>Postdoctoral Fellow, Getty Research Institute</TagLine>
       </Content>
       <Navigation>
         <NavLink to="/about/">About</NavLink>
