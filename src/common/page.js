@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { styled } from "styletron-react";
+import { styled, withStyle } from "styletron-react";
 
 import Link, { FADED_WHITE_BG } from "common/link";
 import { H2 } from "common/header";
@@ -15,7 +15,7 @@ const PageContent = styled("article", {
   position: "relative",
 });
 
-const PageTitle = styled(H2, {
+const PageTitle = withStyle(H2, {
   borderBottom: "1px solid #FFF",
   paddingBottom: "0.5rem",
   margin: "0 0 2rem",
