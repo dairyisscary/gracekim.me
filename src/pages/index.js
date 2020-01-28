@@ -61,7 +61,7 @@ const TagLine = styled("p", {
 });
 
 const PaddedTagLine = withStyle(TagLine, {
-  marginTop: "0.3rem",
+  margin: "0.3rem 0 0",
 });
 
 const Navigation = styled("nav", {
