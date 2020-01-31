@@ -15,11 +15,6 @@ provider "aws" {
   version = "~> 2.46"
 }
 
-variable "storage_secret" {
-  type        = string
-  description = "a secret user-agent that is sent to all requests from CF to S3"
-}
-
 resource "aws_acm_certificate" "main_cert" {
   domain_name               = local.main_domain
   validation_method         = "DNS"
@@ -77,15 +72,8 @@ resource "aws_s3_bucket" "main_website_bucket" {
             "Action": [
                 "s3:GetObject"
             ],
-            "Condition": {
-                "StringEquals": {
-                    "aws:UserAgent": "${var.storage_secret}"
-                }
-            },
             "Effect": "Allow",
-            "Principal": {
-                "AWS": "*"
-            },
+            "Principal": "*",
             "Resource": "arn:aws:s3:::${local.main_domain}/*",
             "Sid": "PublicReadAccess"
         }
@@ -113,15 +101,8 @@ resource "aws_s3_bucket" "www_website_bucket" {
             "Action": [
                 "s3:GetObject"
             ],
-            "Condition": {
-                "StringEquals": {
-                    "aws:UserAgent": "${var.storage_secret}"
-                }
-            },
             "Effect": "Allow",
-            "Principal": {
-                "AWS": "*"
-            },
+            "Principal": "*",
             "Resource": "arn:aws:s3:::www.${local.main_domain}/*",
             "Sid": "PublicReadAccess"
         }
@@ -150,11 +131,6 @@ resource "aws_cloudfront_distribution" "main_website_cdn" {
       http_port              = "80"
       https_port             = "443"
       origin_ssl_protocols   = ["TLSv1.2"]
-    }
-
-    custom_header {
-      name  = "User-Agent"
-      value = var.storage_secret
     }
   }
 
@@ -217,11 +193,6 @@ resource "aws_cloudfront_distribution" "www_website_cdn" {
       http_port              = "80"
       https_port             = "443"
       origin_ssl_protocols   = ["TLSv1.2"]
-    }
-
-    custom_header {
-      name  = "User-Agent"
-      value = var.storage_secret
     }
   }
 
