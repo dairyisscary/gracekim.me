@@ -20,14 +20,12 @@ const TextAreaContainer = styled("div", {
 });
 
 function Contact() {
-  // eslint-disable-next-line no-useless-concat
-  const safeAction = `https://formspree.io/${"g_kim" + "@" + "mit.edu"}`;
   return (
     <Page title="Contact">
       <Helmet>
         <title>Contact | Grace Kim</title>
       </Helmet>
-      <form action={safeAction} method="POST">
+      <form action="https://formspree.io/grace.jimin.kim@gmail.com" method="POST">
         <Fields>
           <Field>
             <FieldLabel htmlFor="contactName">Name</FieldLabel>
