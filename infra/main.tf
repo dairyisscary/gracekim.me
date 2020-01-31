@@ -269,6 +269,30 @@ resource "aws_route53_record" "cdn_alias_aaaa_main_domain" {
   }
 }
 
+resource "aws_route53_record" "cdn_alias_a_www_domain" {
+  zone_id = data.aws_route53_zone.primary.zone_id
+  name    = "www.${local.main_domain}"
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.www_website_cdn.domain_name
+    zone_id                = aws_cloudfront_distribution.www_website_cdn.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cdn_alias_aaaa_www_domain" {
+  zone_id = data.aws_route53_zone.primary.zone_id
+  name    = "www.${local.main_domain}"
+  type    = "AAAA"
+
+  alias {
+    name                   = aws_cloudfront_distribution.www_website_cdn.domain_name
+    zone_id                = aws_cloudfront_distribution.www_website_cdn.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "main_cert_base_validation" {
   zone_id = data.aws_route53_zone.primary.zone_id
   name    = aws_acm_certificate.main_cert.domain_validation_options.0.resource_record_name
