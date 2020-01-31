@@ -1,4 +1,5 @@
 public/
 .cache/
+.terraform/
 
 node_modules/
