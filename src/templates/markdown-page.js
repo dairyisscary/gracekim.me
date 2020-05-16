@@ -33,7 +33,7 @@ export const query = graphql`
   }
 `;
 
-export default props => (
+export default (props) => (
   <Layout>
     <MarkdownPage {...props} />
   </Layout>

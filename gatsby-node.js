@@ -21,7 +21,7 @@ exports.onCreateNode = function onCreateNode({ node, getNode, actions: { createN
 };
 
 exports.createPages = function createPages({ graphql, actions: { createPage } }) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     graphql(`
       query MarkDown {
         allMarkdownRemark {
