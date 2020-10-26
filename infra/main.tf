@@ -49,20 +49,7 @@ resource "aws_s3_bucket" "main_website_bucket" {
   }
 
   website {
-    index_document = "index.html"
-    error_document = "404.html"
-  }
-
-  versioning {
-    enabled = true
-  }
-
-  lifecycle_rule {
-    enabled = true
-
-    noncurrent_version_expiration {
-      days = "15"
-    }
+    redirect_all_requests_to = "https://grace.kimbutler.xyz"
   }
 
   policy = <<POLICY
